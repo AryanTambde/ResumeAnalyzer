@@ -1,6 +1,3 @@
-﻿"""
-Smart Resume AI - Main Application
-"""
 import time
 from PIL import Image
 from jobs.job_search import render_job_search
@@ -474,7 +471,6 @@ class ResumeApp:
             # GitHub star button with lottie animation
             st.markdown("""
             <div style='display: flex; justify-content: center; align-items: center; margin-bottom: 10px;'>
-                <a href='https://github.com/Hunterdii/Smart-AI-Resume-Analyzer' target='_blank' style='text-decoration: none;'>
                     <div style='display: flex; align-items: center; background-color: #24292e; padding: 5px 10px; border-radius: 5px; transition: all 0.3s ease;'>
                         <svg height="16" width="16" viewBox="0 0 16 16" version="1.1" style='margin-right: 5px;'>
                             <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" fill="gold"></path>
@@ -489,13 +485,11 @@ class ResumeApp:
             st.markdown("""
             <p style='text-align: center;'>
                 Powered by <b>Streamlit</b> and <b>Google Gemini AI</b> | Developed by 
-                <a href="https://www.linkedin.com/in/patel-hetkumar-sandipbhai-8b110525a/" target="_blank" style='text-decoration: none; color: #FFFFFF'>
-                    <b>Het Patel (Hunterdii)</b>
+                <a href="https://www.linkedin.com/in//" target="_blank" style='text-decoration: none; color: #FFFFFF'>
+                    <b>Aryan Tambde</b>
                 </a>
             </p>
-            <p style='text-align: center; font-size: 12px; color: #888888;'>
-                "Every star counts! If you find this project helpful, please consider starring the repo to help it reach more people."
-            </p>
+          
             """, unsafe_allow_html=True)
 
     def load_image(self, image_name):
@@ -547,7 +541,7 @@ class ResumeApp:
         """Render the dashboard page"""
         self.dashboard_manager.render_dashboard()
 
-        st.toast("Check out these repositories: [Awesome Hacking](https://github.com/Hunterdii/Awesome-Hacking)", icon="ℹ️")
+        st.toast("Check out these repositories: []()", icon="ℹ️")
 
 
     def render_empty_state(self, icon, message):
@@ -574,9 +568,9 @@ class ResumeApp:
             try:
                 # Extract text from resume
                 if uploaded_file.type == "application/pdf":
-                    resume_text = extract_text_from_pdf(uploaded_file)
+                    resume_text = extract_text_from_pdf(uploaded_file) # type: ignore
                 else:
-                    resume_text = extract_text_from_docx(uploaded_file)
+                    resume_text = extract_text_from_docx(uploaded_file) # type: ignore
 
                 # Store resume data
                 st.session_state.resume_data = {
@@ -898,11 +892,7 @@ class ResumeApp:
         if st.button("Generate Resume 📄", type="primary"):
             print("Validating form data...")
             print(f"Session state form data: {st.session_state.form_data}")
-            print(
-    f"Email input value: {
-        st.session_state.get(
-            'email_input',
-             '')}")
+            print(f"Email input value: { st.session_state.get('email_input','')}")
 
             # Get the current values from form
             current_name = st.session_state.form_data['personal_info']['full_name'].strip(
@@ -961,16 +951,12 @@ class ResumeApp:
                             st.download_button(
                                 label="Download Resume 📥",
                                 data=resume_buffer,
-                                file_name=f"{
-    current_name.replace(
-        ' ', '_')}_resume.docx",
+                                file_name=f"{current_name.replace(' ', '_')}_resume.docx",
                                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                                 on_click=lambda: st.balloons()
                             )
                         except Exception as db_error:
-                            print(
-    f"Warning: Failed to save to database: {
-        str(db_error)}")
+                            print(f"Warning: Failed to save to database: {str(db_error)}")
                             # Still allow download even if database save fails
                             st.warning(
                                 "⚠️ Resume generated but couldn't be saved to database")
@@ -981,9 +967,7 @@ class ResumeApp:
                             st.download_button(
                                 label="Download Resume 📥",
                                 data=resume_buffer,
-                                file_name=f"{
-    current_name.replace(
-        ' ', '_')}_resume.docx",
+                                file_name=f"{current_name.replace(' ', '_')}_resume.docx",
                                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                                 on_click=lambda: st.balloons()
                             )
@@ -1131,6 +1115,7 @@ class ResumeApp:
 
                 .feature-card {
                     padding: 2rem;
+                    background: rgba(45, 45, 45, 0.9)
                     margin: 0;
                 }
 
@@ -1142,12 +1127,13 @@ class ResumeApp:
 
                 .feature-title {
                     font-size: 1.5rem;
-                    color: white;
+                    color: var(--blue);
+                    background: linear-gradient(135deg, #00B4DB 0%, #0083B0 100%);
                     margin: 1rem 0;
                 }
 
                 .feature-description {
-                    color: #ddd;
+                    color: var(--text-primary);
                     line-height: 1.6;
                 }
             </style>
@@ -1165,19 +1151,19 @@ class ResumeApp:
         st.markdown(f"""
             <div class="profile-section">
                 <img src="{image_base64 if image_base64 else 'https://avatars.githubusercontent.com/Hunterdii'}"
-                     alt="Het Patel"
+                     alt="Aryan Tambde"
                      class="profile-image"
                      onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/Hunterdii';">
-                <h2 class="profile-name">Het Patel (Hunterdii)</h2>
+                <h2 class="profile-name">Aryan Tambde (Hunterdii)</h2>
                 <p class="profile-title">Full Stack Developer & AI/ML Enthusiast</p>
                 <div class="social-links">
                     <a href="https://github.com/Hunterdii" class="social-link" target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/patel-hetkumar-sandipbhai-8b110525a/" class="social-link" target="_blank">
+                    <a href="https://www.linkedin.com/in//" class="social-link" target="_blank">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="mailto:hunterdii9879@gmail.com" class="social-link" target="_blank">
+                    <a href="mailto:aryan050276@gmail.com" class="social-link" target="_blank">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
@@ -1415,9 +1401,7 @@ class ResumeApp:
 
                         # Show results based on document type
                         if analysis.get('document_type') != 'resume':
-                            st.error(
-    f"⚠️ This appears to be a {
-        analysis['document_type']} document, not a resume!")
+                            st.error(f"⚠️ This appears to be a { analysis['document_type']} document, not a resume!")
                             st.warning(
                                 "Please upload a proper resume for ATS analysis.")
                             return
@@ -1525,11 +1509,8 @@ class ResumeApp:
                                 """, unsafe_allow_html=True)
                                 for suggestion in analysis.get(
                                     'contact_suggestions', []):
-                                    st.markdown(
-    f"<li style='margin-bottom: 8px;'>✓ {suggestion}</li>",
-     unsafe_allow_html=True)
-                                st.markdown(
-    "</ul></div>", unsafe_allow_html=True)
+                                    st.markdown(f"<li style='margin-bottom: 8px;'>✓ {suggestion}</li>", unsafe_allow_html=True)
+                                st.markdown("</ul></div>", unsafe_allow_html=True)
 
                             # Summary Section
                         if analysis.get('summary_suggestions'):
@@ -2833,7 +2814,7 @@ class ResumeApp:
         
         st.markdown('</div>', unsafe_allow_html=True)
         
-        st.toast("Check out these repositories: [AI-Nexus(AI/ML)](https://github.com/Hunterdii/AI-Nexus)", icon="ℹ️")
+       
 
         # Call-to-Action with Streamlit navigation
         col1, col2, col3 = st.columns([1, 1, 1])
@@ -2850,7 +2831,7 @@ class ResumeApp:
         """Render the job search page"""
         render_job_search()
 
-        st.toast("Check out these repositories: [GeeksforGeeks-POTD](https://github.com/Hunterdii/GeeksforGeeks-POTD)", icon="ℹ️")
+        st.toast("Check out these repositories: [GeeksforGeeks-POTD]()", icon="ℹ️")
 
 
     def render_feedback_page(self):
@@ -2875,34 +2856,12 @@ class ResumeApp:
         with stats_tab:
             feedback_manager.render_feedback_stats()
 
-        st.toast("Check out these repositories: [TryHackMe Free Rooms](https://github.com/Hunterdii/tryhackme-free-rooms)", icon="ℹ️")
+        st.toast("Check out these repositories: )", icon="ℹ️")
 
 
     def show_repo_notification(self):
         message = """
-<div style="background-color: #1e1e1e; border-radius: 10px; border: 1px solid #4b6cb7; padding: 10px; margin: 10px 0; color: white;">
-    <div style="margin-bottom: 10px;">Check out these other repositories:</div>
-    <div style="margin-bottom: 5px;"><b>Hacking Resources:</b></div>
-    <ul style="margin-top: 0; padding-left: 20px;">
-        <li><a href="https://github.com/Hunterdii/tryhackme-free-rooms" target="_blank" style="color: #4CAF50;">TryHackMe Free Rooms</a></li>
-        <li><a href="https://github.com/Hunterdii/Awesome-Hacking" target="_blank" style="color: #4CAF50;">Awesome Hacking</a></li>
-    </ul>
-    <div style="margin-bottom: 5px;"><b>Programming Languages:</b></div>
-    <ul style="margin-top: 0; padding-left: 20px;">
-        <li><a href="https://github.com/Hunterdii/Awesome-Java" target="_blank" style="color: #4CAF50;">Awesome Java</a></li>
-        <li><a href="https://github.com/Hunterdii/30-Days-Of-Rust" target="_blank" style="color: #4CAF50;">30 Days Of Rust</a></li>
-    </ul>
-    <div style="margin-bottom: 5px;"><b>Data Structures & Algorithms:</b></div>
-    <ul style="margin-top: 0; padding-left: 20px;">
-        <li><a href="https://github.com/Hunterdii/GeeksforGeeks-POTD" target="_blank" style="color: #4CAF50;">GeeksforGeeks POTD</a></li>
-        <li><a href="https://github.com/Hunterdii/Leetcode-POTD" target="_blank" style="color: #4CAF50;">Leetcode POTD</a></li>
-    </ul>
-    <div style="margin-bottom: 5px;"><b>AI/ML Projects:</b></div>
-    <ul style="margin-top: 0; padding-left: 20px;">
-        <li><a href="https://github.com/Hunterdii/AI-Nexus" target="_blank" style="color: #4CAF50;">AI Nexus</a></li>
-    </ul>
-    <div style="margin-top: 10px;">If you find this project helpful, please consider ⭐ starring the repo!</div>
-</div>
+
 """
         st.sidebar.markdown(message, unsafe_allow_html=True)
 
