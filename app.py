@@ -413,7 +413,7 @@ class ResumeApp:
             padding-bottom: 2rem;
         }
         .feature-card {
-            background-color: #1e1e1e;
+            background-color: white;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
@@ -732,12 +732,7 @@ class ResumeApp:
 
         for idx, proj in enumerate(st.session_state.form_data['projects']):
             with st.expander(f"Project {idx + 1}", expanded=True):
-                proj['name'] = st.text_input(
-    "Project Name",
-    key=f"proj_name_{idx}",
-    value=proj.get(
-        'name',
-         ''))
+                proj['name'] = st.text_input( "Project Name",key=f"proj_name_{idx}",value=proj.get('name',''))
                 proj['technologies'] = st.text_input("Technologies Used", key=f"proj_tech_{idx}",
                                                    value=proj.get(
                                                        'technologies', ''),
@@ -985,7 +980,7 @@ class ResumeApp:
                 print(f"Full traceback: {traceback.format_exc()}")
                 st.error(f"❌ Error preparing resume data: {str(e)}")
 
-        st.toast("Check out these repositories: [30-Days-Of-Rust](https://github.com/Hunterdii/30-Days-Of-Rust)", icon="ℹ️")
+       
 
     def render_about(self):
         """Render the about page"""
@@ -1019,7 +1014,7 @@ class ResumeApp:
                 .profile-section, .vision-section, .feature-card {
                     text-align: center;
                     padding: 2rem;
-                    background: rgba(45, 45, 45, 0.9);
+                    background:rgba(33, 199, 190, 0.76);
                     border-radius: 20px;
                     margin: 2rem auto;
                     max-width: 800px;
@@ -1115,7 +1110,7 @@ class ResumeApp:
 
                 .feature-card {
                     padding: 2rem;
-                    background: rgba(45, 45, 45, 0.9)
+                    background: rgba(33, 199, 190, 0.76)
                     margin: 0;
                 }
 
@@ -1225,7 +1220,7 @@ class ResumeApp:
             </div>
         """, unsafe_allow_html=True)
 
-        st.toast("Check out these repositories: [Iriswise](https://github.com/Hunterdii/Iriswise)", icon="ℹ️")
+        st.toast("hii", icon="ℹ️")
 
     def render_analyzer(self):
         """Render the resume analyzer page"""
@@ -1254,7 +1249,7 @@ class ResumeApp:
 
             # Display role information
             st.markdown(f"""
-            <div style='background-color: #1e1e1e; padding: 20px; border-radius: 10px; margin: 10px 0;'>
+            <div style='background-color:white ; padding: 20px; border-radius: 10px; margin: 10px 0;'>
                 <h3>{selected_role}</h3>
                 <p>{role_info['description']}</p>
                 <h4>Required Skills:</h4>
@@ -1419,10 +1414,7 @@ class ResumeApp:
                                     width: 150px;
                                     height: 150px;
                                     border-radius: 50%;
-                                    background: conic-gradient(
-                                        #4CAF50 0% {score}%,
-                                        #2c2c2c {score}% 100%
-                                    );
+                                    background: white;
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
@@ -1430,7 +1422,7 @@ class ResumeApp:
                                     <div style="
                                         width: 120px;
                                         height: 120px;
-                                        background: #1a1a1a;
+                                        background: white;
                                         border-radius: 50%;
                                         display: flex;
                                         align-items: center;
@@ -1569,7 +1561,7 @@ class ResumeApp:
                             # Education Section
                         if analysis.get('education_suggestions'):
                                 st.markdown("""
-                                <div style='background-color: #1e1e1e; padding: 15px; border-radius: 10px; margin: 10px 0;'>
+                                <div style='background-color: white; padding: 15px; border-radius: 10px; margin: 10px 0;'>
                                     <h3 style='color: #4CAF50; margin-bottom: 10px;'>🎓 Education</h3>
                                     <ul style='list-style-type: none; padding-left: 0;'>
                                 """, unsafe_allow_html=True)
@@ -1584,7 +1576,7 @@ class ResumeApp:
                             # General Formatting Suggestions
                         if analysis.get('format_suggestions'):
                                 st.markdown("""
-                                <div style='background-color: #1e1e1e; padding: 15px; border-radius: 10px; margin: 10px 0;'>
+                                <div style='background-color: white; padding: 15px; border-radius: 10px; margin: 10px 0;'>
                                     <h3 style='color: #4CAF50; margin-bottom: 10px;'>📄 Formatting</h3>
                                     <ul style='list-style-type: none; padding-left: 0;'>
                                 """, unsafe_allow_html=True)
@@ -1617,7 +1609,7 @@ class ResumeApp:
                         courses[:6]):  # Show top 6 courses
                             with cols[i % 2]:
                                 st.markdown(f"""
-                                <div style='background-color: #1e1e1e; padding: 15px; border-radius: 10px; margin: 10px 0;'>
+                                <div style='background-color: white; padding: 15px; border-radius: 10px; margin: 10px 0;'>
                                     <h4>{course[0]}</h4>
                                     <a href='{course[1]}' target='_blank'>View Course</a>
                                 </div>
@@ -1655,7 +1647,7 @@ class ResumeApp:
 
         with analyzer_tabs[1]:
             st.markdown("""
-            <div style='background-color: #1e1e1e; padding: 20px; border-radius: 10px; margin: 10px 0;'>
+            <div style='background-color: white; padding: 20px; border-radius: 10px; margin: 10px 0;'>
                 <h3>AI-Powered Resume Analysis</h3>
                 <p>Get detailed insights from advanced AI models that analyze your resume and provide personalized recommendations.</p>
                 <p><strong>Upload your resume to get AI-powered analysis and recommendations.</strong></p>

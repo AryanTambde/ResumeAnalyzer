@@ -660,8 +660,8 @@ h1 {
 /* Dark mode styles */
 @media (prefers-color-scheme: dark) {
     .stcard {
-        background: #2d2d2d;
-        border-color: #3d3d3d;
+        background: #4d6b87;
+        border-color: #874fbf;
     }
     
     .feedback-card,
@@ -720,7 +720,7 @@ h1 {
     background: rgba(45, 45, 45, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(59, 174, 140, 0.608);
     border-radius: 16px;
 }
 
@@ -1131,7 +1131,7 @@ h1 {
     border-radius: 16px;
     padding: 2rem;
     margin: 2rem 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(201, 61, 61, 0.1);
     backdrop-filter: blur(10px);
 }
 
